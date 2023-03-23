@@ -4,7 +4,7 @@
     Website: https://szbence7.github.io/
 */
 
-// Blackjack Game 4 Decks of Cards
+// Blackjack Game Decks of Cards
 let cards = [
     { name: "Ace", value: 11 },
     { name: "King", value: 10 },
@@ -88,6 +88,7 @@ function chooseCard() {
     console.log(card2);
     console.log(`Player Total: ${playerTotal}`);
     console.log(`Dealer Total: ${dealerTotal}`);
+    console.log('--------------------------------------------------------')
     cards.unshift(card);
     cards.unshift(card2);
 
@@ -103,6 +104,7 @@ function chooseCard() {
         console.log(`Dealer Total: ${dealerTotal}`);
         console.log(`Player Wins: ${playerWin}`);
         console.log(`Dealer Wins: ${dealerWin}`);
+        console.log('--------------------------------------------------------')
         return;
     } else if (dealerTotal > 21) { // If dealer goes over 21, player wins
         console.log("You Win!");
@@ -114,6 +116,7 @@ function chooseCard() {
         console.log(`Dealer Total: ${dealerTotal}`);
         console.log(`Player Wins: ${playerWin}`);
         console.log(`Dealer Wins: ${dealerWin}`);
+        console.log('--------------------------------------------------------')
         return;
     }
 }
@@ -137,6 +140,7 @@ function stopGame(){
     console.log("You Win!");
     console.log(`Player Total: ${playerTotal}`);
     console.log(`Dealer Total: ${dealerTotal}`);
+    console.log('-----------------------------')
     console.info(playerCards);
     console.log(dealerCards);
     playerTotal = 0;
@@ -144,12 +148,14 @@ function stopGame(){
     playerWin++
     console.log(`Player Wins: ${playerWin}`);
     console.log(`Dealer Wins: ${dealerWin}`);
+    console.log('--------------------------------------------------------')
     isGameAlive = false;
     return;
     } else if (playerTotal > dealerTotal && playerTotal == 21) { // Player has a blackjack
         console.log("BlackJack!");
         console.log(`Player Total: ${playerTotal}`);
         console.log(`Dealer Total: ${dealerTotal}`);
+        console.log('-----------------------------')
         console.info(playerCards);
         playerTotal = 0;
         dealerTotal = 0;
@@ -158,12 +164,14 @@ function stopGame(){
         console.log(`Dealer Total: ${dealerTotal}`);
         console.log(`Player Wins: ${playerWin}`);
         console.log(`Dealer Wins: ${dealerWin}`);
+        console.log('--------------------------------------------------------')
         isGameAlive = false;
         return;
     } else if (playerTotal === 21 && dealerTotal === 21) { // Both players have a blackjack
         console.log("BlackJack for both players!");
         console.log(`Player Total: ${playerTotal}`);
         console.log(`Dealer Total: ${dealerTotal}`);
+        console.log('------------------------------')
         console.info(playerCards);
         console.info(dealerCards);
         playerTotal = 0;
@@ -174,12 +182,14 @@ function stopGame(){
         console.log(`Dealer Total: ${dealerTotal}`);
         console.log(`Player Wins: ${playerWin}`);
         console.log(`Dealer Wins: ${dealerWin}`);
+        console.log('--------------------------------------------------------')
         isGameAlive = false;
         return;  
     } else if (playerTotal < dealerTotal && dealerTotal < 21) { // Dealer has a higher total but not a blackjack
         console.log("You lose!");
         console.log(`Player Total: ${playerTotal}`);
         console.log(`Dealer Total: ${dealerTotal}`);
+        console.log('-----------------------------')
         console.info(playerCards);
         console.info(dealerCards);
         playerTotal = 0;
@@ -189,6 +199,7 @@ function stopGame(){
         console.log(`Dealer Total: ${dealerTotal}`);
         console.log(`Player Wins: ${playerWin}`);
         console.log(`Dealer Wins: ${dealerWin}`);
+        console.log('--------------------------------------------------------')
         isGameAlive = false;
         return;
     } else if (playerTotal < dealerTotal && dealerTotal == 21) { // Dealer has a blackjack
