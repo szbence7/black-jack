@@ -73,10 +73,21 @@ let dealerTotal = 0;
 let playerWin = 0;
 let dealerWin = 0;
 let playerChips = 1000;
-let stake = 5;
+let stake = 50;
 let isGameAlive = false;
+let cardImgs = document.getElementById('cardImgs');
+let isStakeTaken = false;
 
+// Draws a card from the deck and adds it to the player's cards
 function chooseCard() {
+
+    // Checks if the player has enough chips
+    if (playerChips < stake) {
+        console.log("You don't have enough chips!");
+        return;
+    } else if (playerChips >= stake && isStakeTaken == false){
+    isStakeTaken = true;
+    playerChips -= stake;
     isGameAlive = true;
     let card = cards.pop();
     let card2 = cards.pop(Math.floor(Math.random() * cards.length - 7));
@@ -91,7 +102,24 @@ function chooseCard() {
     console.log('--------------------------------------------------------')
     cards.unshift(card);
     cards.unshift(card2);
-
+    console.log(playerChips)
+    } else if (playerChips >= stake && isStakeTaken == true){
+        isGameAlive = true;
+    let card = cards.pop();
+    let card2 = cards.pop(Math.floor(Math.random() * cards.length - 7));
+    playerCards.push(card);
+    dealerCards.push(card2);
+    playerTotal += card.value;
+    dealerTotal += card2.value;
+    console.log(card);
+    console.log(card2);
+    console.log(`Player Total: ${playerTotal}`);
+    console.log(`Dealer Total: ${dealerTotal}`);
+    console.log('--------------------------------------------------------')
+    cards.unshift(card);
+    cards.unshift(card2);
+    console.log(playerChips)
+    }
     // Checks if the player has a blackjack
     
     if (playerTotal > 21) { // If player goes over 21, they lose
@@ -123,6 +151,7 @@ function chooseCard() {
 
 // Stop the game and check who wins
 function stopGame(){
+    isStakeTaken = false;
     // Checks if the player has drawn a card
     if (isGameAlive == false) {
         console.log("You need to draw a card!");
